@@ -1,22 +1,22 @@
 package STE.item;
 
-public abstract class item {
+public class item {
 
     //gives the value of the object. 1 is the lowest and 10 being the highest.
     // 11 being important to the story
     int valuable;
     //name of item
     String name;
-    //if object can be equiped
-    boolean isEquipable;
+    //how many of the object there is
+    int amount;
     //if object is equiped
     boolean isEquiped;
 
-    item(String name, int valuable,boolean isEquipable) {
+    item(String name, int valuable,int amount) {
 
         this.name = name;
         this.valuable = valuable;
-        this.isEquipable = isEquipable;
+        this.amount = amount;
 
     }
     //uses the item
@@ -28,14 +28,15 @@ public abstract class item {
     }
     //equips the item
     public void equip(){
-        if(isEquipable==true){
 
-        }
     }
 
-    //Info Getters
+    //getters and setters
     public String getName(){ return this.name;}
     public int getValuable(){ return this.valuable;}
-    public boolean getIsEquipable(){ return this.isEquipable;}
+    public int getAmount() { return this.amount;}
     public boolean getIsEquiped(){ return this.isEquiped;}
+
+    public void setAmount(int amount1){ this.amount = amount1;}
 }
+

@@ -1,14 +1,17 @@
 package placeholderGameName;
 
+import STE.gameInput;
+import STE.inventory.inventoryInterface;
+import STE.player;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class main {
     public static void main(String args[]) {
-        System.out.println("Hello!");
-        Random random = new Random();
-        while(true){
-            System.out.println(random.nextInt(101));
-        }
+
+        player player = new player("Donald");
+        gameInput gameInput = new gameInput(player);
 
     }
 }
