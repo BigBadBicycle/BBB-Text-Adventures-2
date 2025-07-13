@@ -9,7 +9,7 @@ public class consumable extends item{
     //if the consumable adds health
     boolean isHealth;
 
-    consumable(String name, int valuable,int amount, int consumeValue, boolean isHealth) {
+    public consumable(String name, int valuable, int amount, int consumeValue, boolean isHealth) {
         super(name, valuable,amount);
         this.isHealth = isHealth;
         this.consumeValue = consumeValue;

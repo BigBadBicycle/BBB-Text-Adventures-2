@@ -18,7 +18,7 @@ public class player {
     //in game name of the player
     String name;
     //creates the player's inventory
-    inventory inventory;
+    private inventory inventory;
 
     public player(String name){
         this.name = name;

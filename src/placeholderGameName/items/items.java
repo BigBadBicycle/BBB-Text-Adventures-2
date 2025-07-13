@@ -1,4 +1,7 @@
-package STE.item;
+package placeholderGameName.items;
+
+import STE.item.consumable;
+import STE.item.item;
 
 public class items {
     public item banana = new consumable("Banana", 1, 1, 2, true);

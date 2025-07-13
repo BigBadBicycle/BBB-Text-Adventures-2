@@ -5,11 +5,8 @@ public class item {
     //gives the value of the object. 1 is the lowest and 10 being the highest.
     // 11 being important to the story
     int valuable;
-    //name of item
     String name;
-    //how many of the object there is
     int amount;
-    //if object is equiped
     boolean isEquiped;
 
     item(String name, int valuable,int amount) {
@@ -28,7 +25,11 @@ public class item {
     }
     //equips the item
     public void equip(){
-
+        if (this.isEquiped=!true) {
+            isEquiped=true;
+        } else {
+            System.out.println("already equiped");
+        }
     }
 
     //getters and setters
@@ -38,5 +39,6 @@ public class item {
     public boolean getIsEquiped(){ return this.isEquiped;}
 
     public void setAmount(int amount1){ this.amount = amount1;}
+    public void setIsEquiped(boolean isEquiped1) { this.isEquiped=isEquiped1;}
 }
 

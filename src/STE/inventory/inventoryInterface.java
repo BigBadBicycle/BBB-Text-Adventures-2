@@ -17,13 +17,24 @@ public class inventoryInterface {
 
     //will open the inventory
     public void openInventory(){
+        System.out.println("");
          System.out.println("<============================>");
          System.out.println(player.getName()+"'s Inventory:");
          System.out.println("<============================>");
-        for(int i =0; i<=player.getInventory().slots.size()-1; i++){
-                System.out.println(i+1+". "+player.getInventory().slots.get(i).getName()
-                        +": #"+player.getInventory().slots.get(i).getAmount());
-        }
+         if(player.getInventory().slots.size()==0){
+             System.out.println("Nothing in inventory");
+         } else {
+             for (int i = 0; i <= player.getInventory().slots.size() - 1; i++) {
+                 if(player.getInventory().slots.get(i)==player.getInventory().getSelectedItem()){
+                     System.out.println(i + 1 + ". " + player.getInventory().slots.get(i).getName()
+                             + ": #" + player.getInventory().slots.get(i).getAmount()+" *selected*");
+                 } else {
+                     System.out.println(i + 1 + ". " + player.getInventory().slots.get(i).getName()
+                             + ": #" + player.getInventory().slots.get(i).getAmount());
+                 }
+             }
+         }
         System.out.println("<============================>");
+        System.out.println("");
     }
 }

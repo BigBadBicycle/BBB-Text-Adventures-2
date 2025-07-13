@@ -1,32 +1,29 @@
 package STE.inventory;
 
 import STE.item.item;
-import STE.item.items;
-import STE.item.weapons;
+import placeholderGameName.items.items;
+import placeholderGameName.items.weapons;
 
 import java.util.ArrayList;
 
 public class inventory {
-    //adds all items
     items allItems;
-    //adds all weapons
     weapons allWeapons;
-    //creates the inventory slots (by default is 30)
-    ArrayList<item> slots;
-    //how many slots are in the inventory
-    int slotNumber;
-    //checks if the inventory is full
-    boolean inventoryFull = true;
+    ArrayList<item> slots; //creates the inventory slots (by default is 30)
+    item selectedItem;
+    int slotNumber;  //how many slots are in the inventory
+    boolean inventoryFull = false;
+    boolean isEmpty;
 
     public inventory(int slotNumber) {
-        allItems = new items();
-        allWeapons = new weapons();
+        //allItems = new items();
+        //allWeapons = new weapons();
         this.slotNumber = slotNumber;
         slots = new ArrayList<item>(slotNumber);
 
-        slots.add(allItems.banana);
-        slots.add(allItems.coffee);
-        slots.add(allItems.tomato_soup);
+
+        addItem(allItems.coffee);
+        addItem(allWeapons.throwing_spear);
 
     }
     //the method to tell if the inventory is full
@@ -38,7 +35,22 @@ public class inventory {
         }
     }
 
+    public void addItem(item item){
+        if(inventoryFull==false){
+            slots.add(item);
+            System.out.println("Picked up: "+item.getName());
+        } else {
+            System.out.println("Inventory is Full!");
+        }
+    }
+
     //getters and setters
-    public boolean getInvetoryFull() {return inventoryFull;}
+    public boolean getInventoryFull() {return inventoryFull;}
+    public boolean getIsEmpty() { return isEmpty;}
+    public item getSelectedItem() { return selectedItem;}
+    public ArrayList<item> getSlots() { return slots;}
+
+
+    public void setSelectedItem(item item) { selectedItem=item;}
 
 }

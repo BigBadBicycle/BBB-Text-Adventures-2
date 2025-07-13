@@ -4,13 +4,10 @@ import java.util.Random;
 
 public abstract class weapon extends item{
 
-    //how much damage a weapon does
     int dmg;
-    //how much durability it has
     int durability;
     //anything = or below this number is a miss
     int missChance;
-    //creates a number from 0-100 on chance.
     Random random;
     final int numGen = 101;
 
@@ -23,21 +20,18 @@ public abstract class weapon extends item{
 
         random = new Random();
     }
-    //will attempt a hit on the enemy
     public void attemptHit(){
         if(random.nextInt(numGen)>missChance){
-
+            System.out.println("you used your weapon!!!!");
         } else {
             System.out.println("You Missed!");
         }
 
     }
-    //makes the use only for the weapon
     @Override
     public void use(){
         if(isEquiped==true){
             attemptHit();
-
         }
     }
 
