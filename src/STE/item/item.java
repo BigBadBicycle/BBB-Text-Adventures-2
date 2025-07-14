@@ -2,12 +2,16 @@ package STE.item;
 
 public class item {
 
-    //gives the value of the object. 1 is the lowest and 10 being the highest.
-    // 11 being important to the story
-    int valuable;
-    String name;
-    int amount;
-    boolean isEquiped;
+    /* valuable gives the value of the object from 1-5:
+    1 is very common
+    2 is common
+    3 is uncommon
+    4 is rare
+    5 is a story item */
+    private int valuable;
+    private String name;
+    private int amount;
+    private boolean isEquiped;
 
     item(String name, int valuable,int amount) {
 
@@ -18,18 +22,7 @@ public class item {
     }
     //uses the item
     public void use(){
-        if(isEquiped==true){
-            System.out.println("No Current Use");
-
-        }
-    }
-    //equips the item
-    public void equip(){
-        if (this.isEquiped=!true) {
-            isEquiped=true;
-        } else {
-            System.out.println("already equiped");
-        }
+        System.out.println("no current use");
     }
 
     //getters and setters

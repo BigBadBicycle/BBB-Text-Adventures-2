@@ -1,23 +1,23 @@
 package STE.inventory;
 
 import STE.item.item;
-import placeholderGameName.items.items;
-import placeholderGameName.items.weapons;
+import STE.item.items;
+import STE.item.weapons;
 
 import java.util.ArrayList;
 
 public class inventory {
-    items allItems;
-    weapons allWeapons;
-    ArrayList<item> slots; //creates the inventory slots (by default is 30)
-    item selectedItem;
-    int slotNumber;  //how many slots are in the inventory
-    boolean inventoryFull = false;
-    boolean isEmpty;
+    private items allItems;
+    private weapons allWeapons;
+    private ArrayList<item> slots; //creates the inventory slots (by default is 30)
+    private item selectedItem;
+    private int slotNumber;  //how many slots are in the inventory
+    private boolean inventoryFull = false;
+    private boolean isEmpty;
 
     public inventory(int slotNumber) {
-        //allItems = new items();
-        //allWeapons = new weapons();
+        allItems = new items();
+        allWeapons = new weapons();
         this.slotNumber = slotNumber;
         slots = new ArrayList<item>(slotNumber);
 

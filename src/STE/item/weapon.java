@@ -4,24 +4,24 @@ import java.util.Random;
 
 public abstract class weapon extends item{
 
-    int dmg;
-    int durability;
+    private int dmg;
+    private int durability;
     //anything = or below this number is a miss
-    int missChance;
-    Random random;
-    final int numGen = 101;
+    private int missChance;
+    private Random random;
+    final private int NUM_GEN = 101;
 
     weapon(String name, int valuable,int amount, int dmg, int durability) {
         super(name, valuable,amount);
         this.dmg = dmg;
         this.durability = durability;
         this.missChance = missChance;
-        this.amount = 1;
+        this.setAmount(1);
 
         random = new Random();
     }
     public void attemptHit(){
-        if(random.nextInt(numGen)>missChance){
+        if(random.nextInt(NUM_GEN)>missChance){
             System.out.println("you used your weapon!!!!");
         } else {
             System.out.println("You Missed!");
@@ -30,7 +30,7 @@ public abstract class weapon extends item{
     }
     @Override
     public void use(){
-        if(isEquiped==true){
+        if(this.getIsEquiped()==true){
             attemptHit();
         }
     }
