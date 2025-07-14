@@ -13,6 +13,8 @@ public class main {
     }
 
     public static void setupGame(){
+        String version = "Alpha 1.0";
+        System.out.println("--------------------\nVersion: "+version+"\n--------------------");
         player player = new player("Donald");
         gameInput gameInput = new gameInput(player);
     }
