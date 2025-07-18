@@ -24,7 +24,7 @@ public class gameInput {
 
     //will have all basic input options; also the main input of a game
     public void readDefaultInputs() {
-        System.out.println("=============\nOptions: \n1: open inventory; \n2: use equiped item;\n3: move;\n4: exit game;");
+        System.out.println("=============\nOptions: \n1: open inventory; 2: use equiped item;\n3: room; 4: map;\n5: exit game;");
         int result = scanner.nextInt();
 
         switch (result) {
@@ -47,6 +47,10 @@ public class gameInput {
                 break;
 
             case 4:
+                
+                break;
+
+            case 5:
                 inputReaderOn=false;
                 break;
 
@@ -94,4 +98,6 @@ public class gameInput {
                 break;
         }
     }
+
+    //in charge of room actions
 }

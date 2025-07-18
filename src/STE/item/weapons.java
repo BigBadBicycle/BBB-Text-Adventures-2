@@ -11,6 +11,7 @@ public class weapons {
    final private int RARE = 4;
    final private int STORY = 5;
 
+   //=====================================================================================
    public weapon throwing_spear = new rangedWeapon("Throwing Spear",RARE,10,DEFAULT_DURABILITY, 50);
 
 }

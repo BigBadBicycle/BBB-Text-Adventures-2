@@ -22,9 +22,6 @@ public class inventory {
         slots = new ArrayList<item>(slotNumber);
 
 
-        addItem(allItems.coffee);
-        addItem(allWeapons.throwing_spear);
-
     }
     //the method to tell if the inventory is full
     public void canAddItems(){
