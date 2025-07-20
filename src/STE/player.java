@@ -3,6 +3,8 @@ package STE;
 import STE.inventory.inventory;
 import STE.inventory.inventoryInterface;
 import STE.item.item;
+import STE.map.room;
+import STE.map.rooms;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,18 +14,21 @@ public class player {
 
     private int hp;
     private int energy;
-    //how many slots in the inventory the player has
-    private int slotNumber =30;
-    String name;
-    //creates the player's inventory
+    private int slotNumber =30;  //how many slots in the inventory the player has
+    private String name;
     private inventory inventory;
-    item equipedItem;
+    private room currentRoom;
+    private item equipedItem;
+    private rooms rooms;
 
     public player(String name){
         this.name = name;
         hp = 100;
         inventory = new inventory(slotNumber);
-        System.out.println("Hello "+name);
+
+        //testing
+        rooms = new rooms();
+        currentRoom = rooms.start_room;
 
     }
 
@@ -48,9 +53,11 @@ public class player {
     public String getName(){ return name;}
     public inventory getInventory(){ return this.inventory;}
     public item getEquipedItem() { return equipedItem;}
+    public room getCurrentRoom() { return this.currentRoom;}
 
     public void setHp(int hp1) { this.hp = hp1;}
     public void setSlotNumber(int slotNumber1){this.slotNumber=slotNumber1;}
     public void setEnergy(int energy1) {this.energy=energy1;}
     public void setEquipedItem(item equipedItem) { this.equipedItem = equipedItem;}
+    public void setCurrentRoom(room room) { this.currentRoom= room;}
 }

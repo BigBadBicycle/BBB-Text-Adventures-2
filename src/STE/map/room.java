@@ -41,16 +41,6 @@ public class room {
 
     }
 
-    //draws room
-    public void drawRoom(){
-        for(int i=0;i<y.size();i++){
-            for(int j=0;j<x.size();j++){
-              getTile(j,i).drawTile();
-            }
-            System.out.println();
-        }
-    }
-
     //makes the rows
     private void createAxis(ArrayList<Integer> c){
         for(int i=0;i<size;i++){
@@ -73,6 +63,8 @@ public class room {
     public String getType() { return this.type;}
     public int getDanger() { return this.danger;}
     public int getSize() {return this.size;}
+    public ArrayList<Integer> getX(){ return this.x;}
+    public ArrayList<Integer> getY(){ return this.y;}
     public boolean getIsStory() { return this.isStory;}
     public ArrayList<tile> getTiles(){ return this.tiles;}
 

@@ -1,6 +1,7 @@
 package STE;
 
 import STE.inventory.inventoryInterface;
+import STE.map.roomInterface;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,6 +10,7 @@ public class gameInput {
     private boolean inputReaderOn = true;
     private Scanner scanner;
     private player player;
+    roomInterface roomInterface;
 
     inventoryInterface inventoryInterface;
 
@@ -16,6 +18,7 @@ public class gameInput {
         scanner = new Scanner(System.in);
         this.player = player;
         inventoryInterface = new inventoryInterface(player);
+        roomInterface = new roomInterface(player);
 
         while (inputReaderOn == true) {
             readDefaultInputs();
@@ -24,7 +27,7 @@ public class gameInput {
 
     //will have all basic input options; also the main input of a game
     public void readDefaultInputs() {
-        System.out.println("=============\nOptions: \n1: open inventory; 2: use equiped item;\n3: room; 4: map;\n5: exit game;");
+        System.out.println("=============\nOptions: \n1: open inventory; 2: interact;\n3: move; 4: map;\n5: exit game;");
         int result = scanner.nextInt();
 
         switch (result) {
@@ -63,6 +66,7 @@ public class gameInput {
 
     //in charge of all inventory actions
     public void readInventoryInputs() {
+        clearConsole();
         inventoryInterface.openInventory();
         System.out.println("Inventory Options: " +
                 "1: select item; " +
@@ -99,5 +103,12 @@ public class gameInput {
         }
     }
 
-    //in charge of room actions
+    //prints to get rid of all things
+    private void clearConsole(){
+        for(int i=0;i<30;i++){
+            System.out.println();
+        }
+    }
+
+
 }

@@ -2,12 +2,6 @@ package STE.item;
 
 public class item {
 
-    /* valuable gives the value of the object from 1-5:
-    1 is very common
-    2 is common
-    3 is uncommon
-    4 is rare
-    5 is a story item */
     private int valuable;
     private String name;
     private int amount;

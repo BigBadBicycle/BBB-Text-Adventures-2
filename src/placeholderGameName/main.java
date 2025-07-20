@@ -10,10 +10,7 @@ import java.util.Random;
 
 public class main {
     public static void main(String args[]) {
-       // setupGame();
-        room room = new room("test",5,0,false);
-        room.getTile(4,4).setHasContainer(true);
-        room.drawRoom();
+       setupGame();
 
     }
 

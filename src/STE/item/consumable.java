@@ -16,5 +16,6 @@ public class consumable extends item{
     }
 
     //setters and getters
-
+    public int getConsumeValue(){ return this.consumeValue;}
+    public boolean getIsHealth() { return this.isHealth;}
 }
