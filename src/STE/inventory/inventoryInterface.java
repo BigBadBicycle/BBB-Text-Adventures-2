@@ -19,18 +19,18 @@ public class inventoryInterface {
          System.out.println("<============================>");
          System.out.println(player.getName()+"'s Inventory:");
          System.out.println("<============================>");
-         if(player.getInventory().getSlots().size()==0){
+         if(inventory.getSlots().isEmpty()){
              System.out.println("Nothing in inventory");
          } else {
-             for (int i = 0; i <= player.getInventory().getSlots().size() - 1; i++) {
-                 if(player.getInventory().getSlots().get(i)==player.getEquipedItem()){
-                     if(player.getInventory().getSlots().get(i)==player.getInventory().getSelectedItem()){
+             for (int i = 0; i < inventory.getSlots().size(); i++) {
+                 if(inventory.getSlots().get(i)==player.getEquipedItem()){
+                     if(inventory.getSlots().get(i)==inventory.getSelectedItem()){
                          printItemForInventory(" [equiped] *selected*",i);
                      } else{
                          printItemForInventory(" [equiped]",i);
                      }
                  }
-                 else if(player.getInventory().getSlots().get(i)==player.getInventory().getSelectedItem()) {
+                 else if(inventory.getSlots().get(i)==inventory.getSelectedItem()) {
                      printItemForInventory(" *selected*", i);
                  }
                  else {
@@ -42,13 +42,34 @@ public class inventoryInterface {
         System.out.println("");
     }
 
-    private void printItemForInventory(String extraDetail,int i){
+    public void selectItem(int result2){
+        try{
+            System.out.println("******************");
+            System.out.println(inventory.getSlots().get(result2-1).getName()+ " is selected");
+            System.out.println("******************");
+            inventory.setSelectedItem(inventory.getSlots().get(result2-1));
+        } catch(Exception e){
+            System.out.println("Error, try again");
+        }
+    }
+
+    public void useSelectedItem(){
+        inventory.getSelectedItem().use();
+    }
+
+    public void equipSelectedItem(){
+        player.equipItem(inventory.getSelectedItem());
+    }
+
+
+    //private
+    protected void printItemForInventory(String extraDetail,int i){
         if(extraDetail==null){
             extraDetail="";
         }
 
-        System.out.println(i + 1 + ". " + player.getInventory().getSlots().get(i).getName()
-                + ": #" + player.getInventory().getSlots().get(i).getAmount()+extraDetail);
+        System.out.println(i + 1 + ". " + inventory.getSlots().get(i).getName()
+                + ": #" + inventory.getSlots().get(i).getAmount()+extraDetail);
     }
 
 }

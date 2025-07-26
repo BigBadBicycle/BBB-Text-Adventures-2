@@ -10,6 +10,7 @@ public class room {
     private ArrayList<Integer> x;
     private ArrayList<Integer> y;
     private ArrayList<tile> tiles; //all tiles
+    private tile playerTile;
     private int size;
     boolean isStory;
 
@@ -25,7 +26,7 @@ public class room {
 
         create();
     }
-
+//=====================================================================================
     //creates the room
     private void create(){
         createAxis(x);
@@ -37,9 +38,46 @@ public class room {
             }
         }
 
-        System.out.println("created room!");
-
     }
+
+    //gets tile (you need to use tempTile if you want to access the tile)
+    public tile getTile(int x, int y){
+        tile tempTile = null;
+        for (int i = 0; i < tiles.size(); i++) {
+            if (tiles.get(i).getX() == x && tiles.get(i).getY() == y) {
+                tempTile = tiles.get(i);
+            }
+        }
+        return tempTile;
+    }
+    public tile getPlayerTile(){
+        tile tempTile = null;
+        for (int i = 0; i < tiles.size(); i++) {
+            if (tiles.get(i).getHasPlayer() == true) {
+                tempTile = tiles.get(i);
+            }
+        }
+        return tempTile;
+    }
+
+    public ArrayList<tile> getContainerTiles(){
+        ArrayList<tile> tempTile1 = null;
+        for (int i = 0; i < tiles.size(); i++) {
+            if (tiles.get(i).getHasContainer() == true) {
+                tempTile1.add(tiles.get(i));
+            }
+        }
+        return tempTile1;
+    }
+
+    public void makeContainerTile(int x, int y,String type,int slotNumber, int rarity){
+        getTile(x,y).setHasContainer(true);
+        getTile(x,y).createContainer(type,slotNumber,rarity);
+    }
+
+
+    //====================================================
+    //private
 
     //makes the rows
     private void createAxis(ArrayList<Integer> c){
@@ -48,18 +86,7 @@ public class room {
         }
     }
 
-    //gets tile (you need to use tempTile if you want to access the tile)
-    public tile getTile(int x, int y){
-            tile tempTile = null;
-            for (int i = 0; i < tiles.size(); i++) {
-                if (tiles.get(i).getCords().get(0) == x && tiles.get(i).getCords().get(1) == y) {
-                    tempTile = tiles.get(i);
-                }
-            }
-            return tempTile;
-    }
-
-    //getters and setters
+    // simple getters and setters
     public String getType() { return this.type;}
     public int getDanger() { return this.danger;}
     public int getSize() {return this.size;}

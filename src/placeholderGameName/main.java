@@ -15,18 +15,20 @@ public class main {
     }
 
     public static void setupGame(){
-        String version = "Alpha 0.02";
+        String version = "Alpha 0.03";
         System.out.println("--------------------\nVersion: "+version+"\n--------------------");
         player player = new player("Donald");
         gameInput gameInput = new gameInput(player);
 
     }
+
 }
 /*to do list:
 ==========================================
-make rooms
+procedrally gen rooms
 make a combat system
 make some npcs or smth similar
+containers
 make a save file
 ==========================================
  */

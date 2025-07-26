@@ -6,7 +6,7 @@ public class rooms {
     //room size
     private final int TINY = 2;
     private final int SMALL = 3;
-    private final int REGULAR = 4;
+    private final int REGULAR_SIZE = 4;
     private final int BIG = 5;
     private final int LARGE = 6;
     private final int MASSIVE =7;
@@ -24,6 +24,6 @@ public class rooms {
     private final int EXTREMELY_DANGEROUS =5;
     //===============================================
 
-    public room start_room = new room("start room",SMALL,NO_DANGER,NOT_STORY);
+    public room start_room = new room("start room",REGULAR_SIZE,NO_DANGER,NOT_STORY);
 
 }

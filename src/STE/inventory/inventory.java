@@ -21,7 +21,6 @@ public class inventory {
         this.slotNumber = slotNumber;
         slots = new ArrayList<item>(slotNumber);
 
-
     }
     //the method to tell if the inventory is full
     public void canAddItems(){
@@ -31,11 +30,15 @@ public class inventory {
             inventoryFull=true;
         }
     }
-
     public void addItem(item item){
         if(inventoryFull==false){
-            slots.add(item);
-            System.out.println("Picked up: "+item.getName());
+            if(slots.contains(item)==false){
+                slots.add(item);
+                System.out.println("Picked up: "+item.getName());
+            } else{
+                slots.get(slots.indexOf(item)).setAmount(slots.get(slots.indexOf(item)).getAmount()+item.getAmount());
+                System.out.println("Picked up: "+item.getName());
+            }
         } else {
             System.out.println("Inventory is Full!");
         }
