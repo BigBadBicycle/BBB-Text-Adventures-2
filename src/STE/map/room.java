@@ -61,7 +61,7 @@ public class room {
     }
 
     public ArrayList<tile> getContainerTiles(){
-        ArrayList<tile> tempTile1 = null;
+        ArrayList<tile> tempTile1 = new ArrayList<tile>();
         for (int i = 0; i < tiles.size(); i++) {
             if (tiles.get(i).getHasContainer() == true) {
                 tempTile1.add(tiles.get(i));
@@ -70,9 +70,9 @@ public class room {
         return tempTile1;
     }
 
-    public void makeContainerTile(int x, int y,String type,int slotNumber, int rarity){
+    public void makeContainerTile(int x, int y,int slotNumber){
         getTile(x,y).setHasContainer(true);
-        getTile(x,y).createContainer(type,slotNumber,rarity);
+        getTile(x,y).createContainer(slotNumber);
     }
 
 

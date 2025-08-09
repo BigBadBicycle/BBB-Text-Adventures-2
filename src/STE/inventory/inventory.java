@@ -7,8 +7,6 @@ import STE.item.weapons;
 import java.util.ArrayList;
 
 public class inventory {
-    private items allItems;
-    private weapons allWeapons;
     private ArrayList<item> slots; //creates the inventory slots (by default is 30)
     private item selectedItem;
     private int slotNumber;  //how many slots are in the inventory
@@ -16,8 +14,6 @@ public class inventory {
     private boolean isEmpty;
 
     public inventory(int slotNumber) {
-        allItems = new items();
-        allWeapons = new weapons();
         this.slotNumber = slotNumber;
         slots = new ArrayList<item>(slotNumber);
 
@@ -32,12 +28,10 @@ public class inventory {
     }
     public void addItem(item item){
         if(inventoryFull==false){
-            if(slots.contains(item)==false){
+            if(item.getName()==slots.get(slots.indexOf(item)).getName()==false){
                 slots.add(item);
-                System.out.println("Picked up: "+item.getName());
             } else{
-                slots.get(slots.indexOf(item)).setAmount(slots.get(slots.indexOf(item)).getAmount()+item.getAmount());
-                System.out.println("Picked up: "+item.getName());
+                slots.get(slots.indexOf(item)).addToAmount(item.getAmount());
             }
         } else {
             System.out.println("Inventory is Full!");

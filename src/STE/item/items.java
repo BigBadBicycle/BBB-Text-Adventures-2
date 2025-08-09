@@ -1,5 +1,7 @@
 package STE.item;
 
+import java.util.ArrayList;
+
 public class items {
 
     //Valuable variables :)))) so silly
@@ -13,4 +15,14 @@ public class items {
     public item banana = new consumable("Banana", COMMON, 1, 2, true);
     public item coffee = new consumable("Coffee",COMMON,1,4, false);
     public item tomato_soup = new consumable("Tomato Soup",UNCOMMON,1,5, true);
+    //=====================================================================================
+    public ArrayList<item> allItemsList;
+
+    public items(){
+        allItemsList = new ArrayList<item>();
+
+        allItemsList.add(banana);
+        allItemsList.add(coffee);
+        allItemsList.add(coffee);
+    }
 }

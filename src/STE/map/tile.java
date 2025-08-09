@@ -8,38 +8,51 @@ public class tile {
 
     private int x;
     private int y;
+    private String tileSymbol;
     private boolean hasContainer = false;
     private container container;
     private boolean hasNPC = false;
     private boolean hasPlayer = false;
+    private boolean isEmptyTile = true;
 
     room room;
     public tile(int column, int row, room room){
         this.x = column;
         this.y = row;
         this.room = room;
+        checkTile();
 
     }
 
-    public void drawTile(){
+    public void checkTile(){
         if(hasContainer==true){
             if(hasPlayer==true){
-                System.out.print("[C]");
+                isEmptyTile = false;
+                tileSymbol = "[C]";
             } else{
-                System.out.print("[c]");
+                isEmptyTile = false;
+                tileSymbol = "[c]";
             }
         }else if(hasNPC==true){
-            System.out.print("[n]");
+            isEmptyTile = false;
+            tileSymbol = "[n]";
         } else if(hasPlayer==true){
-            System.out.print("[P]");
+            isEmptyTile = false;
+            tileSymbol = "[P]";
         } else{
-            System.out.print("[ ]");
+            isEmptyTile = true;
+            tileSymbol = "[ ]";
         }
     }
 
-    public void createContainer(String type,int slotNumber, int rarity){
+    public void drawTile(){
+        checkTile();
+        System.out.print(tileSymbol);
+    }
+
+    public void createContainer(int slotNumber){
         if(hasContainer==true){
-            container = new container(type,slotNumber,rarity);
+            container = new container(slotNumber);
         } else{
             System.out.println("Tile does not have container");
         }
@@ -55,6 +68,7 @@ public class tile {
     public boolean getHasNPC() { return hasNPC;}
     public boolean getHasPlayer() { return hasPlayer;}
     public container getContainer() { return container;}
+    public boolean getIsEmptyTile() { return isEmptyTile;}
 
 
     public void setX(int x) { this.x = x;}
@@ -62,4 +76,5 @@ public class tile {
     public void setHasContainer(boolean hasContainer) { this.hasContainer=hasContainer;}
     public void setHasNPC(boolean hasNPC) { this.hasNPC=hasNPC;}
     public void setHasPlayer(boolean hasPlayer) { this.hasPlayer=hasPlayer;}
+    public void setEmptyTile(boolean isEmptyTile) { this.isEmptyTile= isEmptyTile;}
 }

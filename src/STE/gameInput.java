@@ -19,15 +19,14 @@ public class gameInput {
     containerInterface containerInterface;
     inventoryInterface inventoryInterface;
 
-    public gameInput(player player) {
+    public gameInput(player player,temp_Dev_testing tempDevTesting) {
         scanner = new Scanner(System.in);
         this.player = player;
         inventoryInterface = new inventoryInterface(player);
         roomInterface = new roomInterface(player);
-        //containerInterface = new containerInterface(player,);
         roomInterface.randomPlacePlayer();
 
-        player.getCurrentRoom().makeContainerTile(1,1,"test",30,1);
+        tempDevTesting.setGameInput(this);
 
         while (inputReaderOn == true) {
             readDefaultInputs();
@@ -38,11 +37,15 @@ public class gameInput {
     //will have all basic input options; also the main input of a game
     public void readDefaultInputs() {
 
-        final int OPEN_INVENTORY = 1;
-        final int INTERACT = 2;
-        final int MOVE = 3;
-        final int MAP = 4;
-        final int EXIT = 5;
+        final String OPEN_INVENTORY = "q";
+        final String INTERACT = "e";
+        final String MAP = "m";
+        final String EXIT = "z";
+
+        final String MOVEUP = "w";
+        final String MOVEDOWN = "s";
+        final String MOVELEFT = "a";
+        final String MOVERIGHT = "d";
 
         final int UP = -1;
         final int DOWN = 1;
@@ -53,8 +56,8 @@ public class gameInput {
         clearConsole();
         System.out.println("=============");
         roomInterface.drawRoom();
-        System.out.println("=============\nOptions: 1: open inventory; 2: interact; 3: move; 4: map; 5: exit game;");
-        int result = scanner.nextInt();
+        System.out.println("=============\nOptions: 'q': open inventory; 'e': interact; 'm': map; 'z': exit game;\n w-UP; s-DOWN; a-LEFT; d-RIGHT");
+        String result = scanner.next();
 
         switch (result) {
             case OPEN_INVENTORY:
@@ -71,30 +74,23 @@ public class gameInput {
                         System.out.println("Nothing on tile");
                     }
                 break;
+            //all movement:
+            //======================
 
-            case MOVE:
-
-                System.out.println("type: w->up; s->down; a->left; d->right");
-                String result2 = scanner.next();
-                switch(result2){
-
-                    case "w":
-                        roomInterface.mvPlayerBy1(0,UP);
-                        break;
-                    case "s":
-                        roomInterface.mvPlayerBy1(0,DOWN);
-                        break;
-                    case "a":
-                        roomInterface.mvPlayerBy1(LEFT,0);
-                        break;
-                    case "d":
-                        roomInterface.mvPlayerBy1(RIGHT,0);
-                        break;
-                    default: System.out.println("invalid. please try again");
-
-                }
-
+            case MOVEUP:
+                roomInterface.mvPlayerBy1(0,UP);
                 break;
+            case MOVEDOWN:
+                roomInterface.mvPlayerBy1(0,DOWN);
+                break;
+            case MOVELEFT:
+                roomInterface.mvPlayerBy1(LEFT,0);
+                break;
+            case MOVERIGHT:
+                roomInterface.mvPlayerBy1(RIGHT,0);
+                break;
+
+            //==================================
 
             case MAP:
                 break;
@@ -155,9 +151,6 @@ public class gameInput {
         final int TAKE_ITEM = 3;
         final int PUT_AWAY_ITEM = 4;
 
-        items items = new items();
-        tempContainer.addItem(items.coffee);
-
         containerInterface.openInventory();
 
         System.out.println("Inventory Options: " +
@@ -179,13 +172,13 @@ public class gameInput {
             break;
 
         case TAKE_ITEM:
-            inventoryInterface.useSelectedItem();
-            readInventoryInputs();
+            containerInterface.takeItem(player);
+            readContainerInputs();
             break;
 
         case PUT_AWAY_ITEM:
-            inventoryInterface.equipSelectedItem();
-            readInventoryInputs();
+            containerInterface.putAwayItem(player);
+            readContainerInputs();
             break;
 
         default:

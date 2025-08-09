@@ -1,12 +1,8 @@
 package placeholderGameName;
 
 import STE.gameInput;
-import STE.inventory.inventoryInterface;
-import STE.map.room;
+import STE.temp_Dev_testing;
 import STE.player;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class main {
     public static void main(String args[]) {
@@ -18,17 +14,25 @@ public class main {
         String version = "Alpha 0.03";
         System.out.println("--------------------\nVersion: "+version+"\n--------------------");
         player player = new player("Donald");
-        gameInput gameInput = new gameInput(player);
+        temp_Dev_testing temp_Dev_testing = new temp_Dev_testing(player);
+        gameInput gameInput = new gameInput(player, temp_Dev_testing);
+
 
     }
 
 }
 /*to do list:
 ==========================================
+//****FIX ITEM ADDING IN INVENTORIES****
+//
 procedrally gen rooms
+    -create a map system with generating doors and room connections
+    -be able to travel to different rooms
+    -have room data save
+    -have containers generate loot
 make a combat system
 make some npcs or smth similar
-containers
+create a better input system (less input needed/ easier)
 make a save file
 ==========================================
  */

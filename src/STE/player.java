@@ -26,10 +26,6 @@ public class player {
         hp = 100;
         inventory = new inventory(slotNumber);
 
-        //testing
-        rooms = new rooms();
-        currentRoom = rooms.start_room;
-
     }
 
     public void equipItem(item item){

@@ -20,6 +20,18 @@ public class item {
     }
 
     //getters and setters
+    //advanced
+    public void addToAmount(int amount1){
+            amount= amount1+amount;
+    }
+    public void removeToAmount(int amount1){
+        if(amount-amount1<0){
+            System.out.println("can't subtract that much from amount");
+        } else{
+            amount = amount-amount1;
+        }
+    }
+
     public String getName(){ return this.name;}
     public int getValuable(){ return this.valuable;}
     public int getAmount() { return this.amount;}

@@ -23,7 +23,17 @@ public class rooms {
     private final int DANGEROUS = 4;
     private final int EXTREMELY_DANGEROUS =5;
     //===============================================
-
+    //where you create all the rooms
     public room start_room = new room("start room",REGULAR_SIZE,NO_DANGER,NOT_STORY);
 
+
+    //===============================================
+    //===============================================
+    //===============================================
+    //where you generate all the rooms
+    roomGen roomGen = new roomGen();
+
+    public rooms(){
+        roomGen.generateContainers(start_room,200);
+    }
 }
