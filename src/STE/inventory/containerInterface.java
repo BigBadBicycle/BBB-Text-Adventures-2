@@ -1,12 +1,14 @@
 package STE.inventory;
 
+import STE.item.item;
 import STE.player;
 
 public class containerInterface extends inventoryInterface{
-
+    player player;
     container container;
     public containerInterface(player player,container container) {
         super(player);
+        this.player = player;
         this.container=container;
     }
 
@@ -14,7 +16,7 @@ public class containerInterface extends inventoryInterface{
     public void openInventory(){
         System.out.println("");
         System.out.println("<============================>");
-        System.out.println("container:");
+        System.out.println("Container:");
         System.out.println("<============================>");
         if(container.getSlots().isEmpty()){
             System.out.println("Nothing in container");
@@ -48,22 +50,47 @@ public class containerInterface extends inventoryInterface{
         }
     }
 
-    public void takeItem(player player){
-        if(container.getSelectedItem()!=null){
-            player.getInventory().addItem(container.getSelectedItem());
-            container.getSlots().remove(container.getSelectedItem());
-            container.setSelectedItem(null);
+    public void takeItem(int itemNumber, int itemAmount){
+        try{
+            item tempItem = container.getSlots().get(itemNumber-1);
+            if(tempItem.getAmount()<=itemAmount){
+                player.getInventory().addItem(tempItem);
+                container.getSlots().remove(tempItem);
+            } else{
+                final int tempamount = tempItem.getAmount();
+                tempItem.setAmount(itemAmount);
+                player.getInventory().addItem(tempItem);
+                tempItem.setAmount(tempamount);
+                container.getSlots().get(itemNumber-1).removeToAmount(itemAmount);
+            }
 
-        } else{
-            System.out.println("Please select item");
+        } catch(Exception e){
+            System.out.println("Error, try again");
         }
     }
 
-    public void putAwayItem(player player){
+    public void putAwayItem(player player,int amount){
         if(player.getInventory().getSelectedItem()!=null) {
-            container.addItem(player.getInventory().getSelectedItem());
-            player.getInventory().getSlots().remove(player.getInventory().getSelectedItem());
-            player.getInventory().setSelectedItem(null);
+            if(amount>=player.getInventory().getSelectedItem().getAmount()) {
+                container.addItem(player.getInventory().getSelectedItem());
+                player.getInventory().getSlots().remove(player.getInventory().getSelectedItem());
+                player.getInventory().setSelectedItem(null);
+            } else{
+
+                if(amount<0){
+                    System.out.println("can't do negatives sir");
+                } else{
+                    item tempItem = player.getInventory().getSelectedItem();
+                    final int tempamount = tempItem.getAmount();
+                    tempItem.setAmount(amount);
+                    container.addItem(tempItem);
+                    tempItem.setAmount(tempamount);
+
+                    player.getInventory().getSelectedItem().removeToAmount(amount);
+                    //player.getInventory().getSlots().get(player.getInventory().getSlots().indexOf(player.getInventory().getSelectedItem())).removeToAmount(amount);
+                }
+
+            }
         } else {
             System.out.println("No selected item in inventory");
         }

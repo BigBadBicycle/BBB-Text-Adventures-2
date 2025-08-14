@@ -29,6 +29,7 @@ public class roomInterface {
         }
         drawRoomBorders();
         System.out.println();
+        whatTileAmIOn();
     }
 
     //only call once because it might place more than one player!!!
@@ -43,10 +44,6 @@ public class roomInterface {
         } else{
             room.getTile(x,y).setHasPlayer(true);
         }
-
-    }
-
-    public void interactWithContainer(){
 
     }
 
@@ -65,6 +62,16 @@ public class roomInterface {
         for(int b=0;b<room.getY().size();b++){
             System.out.print("###");
         }
+    }
+
+    private void whatTileAmIOn(){
+        String whatTile = "empty";
+        if(room.getPlayerTile().getIsEmptyTile()==true){
+            whatTile = "empty";
+        } else if(room.getPlayerTile().getHasContainer()==true){
+            whatTile = "container";
+        }
+        System.out.println("The player is on a: "+whatTile+" tile");
     }
 
 }

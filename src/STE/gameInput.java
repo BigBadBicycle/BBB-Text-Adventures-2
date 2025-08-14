@@ -139,6 +139,8 @@ public class gameInput {
                 inventoryInterface.equipSelectedItem();
                 readInventoryInputs();
                 break;
+            default:
+                System.out.println("invalid input");
         }
     }
     //========================================================================================
@@ -146,43 +148,52 @@ public class gameInput {
 
     public void readContainerInputs() {
 
-        final int SELECT_ITEM = 1;
-        final int CLOSE_INVENTORY = 2;
-        final int TAKE_ITEM = 3;
-        final int PUT_AWAY_ITEM = 4;
+        final int CLOSE_INVENTORY = 1;
+        final int TAKE_ITEM = 2;
+        final int PUT_AWAY_ITEM = 3;
 
         containerInterface.openInventory();
 
         System.out.println("Inventory Options: " +
-                "1: select item; " +
-                "2. close inventory; " +
-                "3. take item; " +
-                "4. put away item;");
+                "1. close inventory; " +
+                "2. take item; " +
+                "3. put away item;");
     int result = scanner.nextInt();
     switch (result){
-        case SELECT_ITEM:
-            System.out.println("Select Item (by number)");
-            int result1 = scanner.nextInt();
-            containerInterface.selectItem(result1);
-            readContainerInputs();
-            break;
-
         case CLOSE_INVENTORY:
             //left empty to close
             break;
 
         case TAKE_ITEM:
-            containerInterface.takeItem(player);
+            try {
+                System.out.println("select item by number");
+                int itemNumber = scanner.nextInt();
+                System.out.println("how much do you want");
+                int itemAmount = scanner.nextInt();
+                containerInterface.takeItem(itemNumber, itemAmount);
+            } catch (Exception e) {
+                System.out.println("error try again");
+            }
             readContainerInputs();
             break;
 
         case PUT_AWAY_ITEM:
-            containerInterface.putAwayItem(player);
+            if(player.getInventory().getSelectedItem()!=null) {
+                if (player.getInventory().getSelectedItem().getAmount() == 1) {
+                    containerInterface.putAwayItem(player, 1);
+                } else {
+                    System.out.println("amount you want to put away");
+                    int itemAmount = scanner.nextInt();
+                    containerInterface.putAwayItem(player, itemAmount);
+                }
+            } else{
+                System.out.println("Try again");
+            }
             readContainerInputs();
             break;
 
         default:
-            System.out.println("Invalid Input");
+            System.out.println("invalid input");
     }
     }
 

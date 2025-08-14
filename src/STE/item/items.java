@@ -23,6 +23,16 @@ public class items {
 
         allItemsList.add(banana);
         allItemsList.add(coffee);
-        allItemsList.add(coffee);
+        allItemsList.add(tomato_soup);
+    }
+
+    public item findItemByName(item item){
+        item tempitem = null;
+        for (int i = 0; i < allItemsList.size(); i++) {
+            if (allItemsList.get(i).getName() == item.getName()) {
+                tempitem = allItemsList.get(i);
+            }
+        }
+        return tempitem;
     }
 }

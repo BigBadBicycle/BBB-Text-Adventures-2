@@ -54,7 +54,11 @@ public class inventoryInterface {
     }
 
     public void useSelectedItem(){
-        inventory.getSelectedItem().use();
+        if(player.getInventory().getSelectedItem()!=null){
+            player.getInventory().getSelectedItem().use();
+        } else{
+            System.out.println("no item selected");
+        }
     }
 
     public void equipSelectedItem(){

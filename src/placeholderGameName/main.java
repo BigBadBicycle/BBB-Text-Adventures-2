@@ -24,15 +24,5 @@ public class main {
 /*to do list:
 ==========================================
 //****FIX ITEM ADDING IN INVENTORIES****
-//
-procedrally gen rooms
-    -create a map system with generating doors and room connections
-    -be able to travel to different rooms
-    -have room data save
-    -have containers generate loot
-make a combat system
-make some npcs or smth similar
-create a better input system (less input needed/ easier)
-make a save file
 ==========================================
  */
