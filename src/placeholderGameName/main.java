@@ -13,9 +13,11 @@ public class main {
     public static void setupGame(){
         String version = "Alpha 0.03";
         System.out.println("--------------------\nVersion: "+version+"\n--------------------");
+
         player player = new player("Donald");
         temp_Dev_testing temp_Dev_testing = new temp_Dev_testing(player);
-        gameInput gameInput = new gameInput(player, temp_Dev_testing);
+
+        gameInput gameInput = new gameInput(player);
 
 
     }
@@ -23,6 +25,5 @@ public class main {
 }
 /*to do list:
 ==========================================
-//****FIX ITEM ADDING IN INVENTORIES****
 ==========================================
  */

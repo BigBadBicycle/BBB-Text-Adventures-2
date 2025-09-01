@@ -19,14 +19,12 @@ public class gameInput {
     containerInterface containerInterface;
     inventoryInterface inventoryInterface;
 
-    public gameInput(player player,temp_Dev_testing tempDevTesting) {
+    public gameInput(player player) {
         scanner = new Scanner(System.in);
         this.player = player;
         inventoryInterface = new inventoryInterface(player);
         roomInterface = new roomInterface(player);
         roomInterface.randomPlacePlayer();
-
-        tempDevTesting.setGameInput(this);
 
         while (inputReaderOn == true) {
             readDefaultInputs();

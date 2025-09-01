@@ -11,6 +11,7 @@ public class roomGen {
     private Random random;
     private ArrayList<Integer> candidateTilesIndex;
     private int defaultSlotNumber = 30;
+    private items items;
 
     roomGen(){
         random = new Random();
@@ -19,7 +20,7 @@ public class roomGen {
     public void generateContainers(room room,int contChance){
         getCandidateContainers(room,contChance);
         makeToContainers(room);
-        generateContainerItems(room);
+        generateContainerItems(room, items);
 
         //reset candidateTilesIndex
         candidateTilesIndex = null;
@@ -57,14 +58,14 @@ public class roomGen {
     }
 
     //*** add custom options for item generation
-    private void generateContainerItems(room room){
+    //***also factor in item rarity
+    private void generateContainerItems(room room,items items){
         System.out.println("generating items in containers in: "+room.getType());
 
         for(int i =0;i<room.getContainerTiles().size();i++){
             int items_to_add = random.nextInt(defaultSlotNumber);
             for(int j = 0; j<=items_to_add;j++){
-                items allItems = new items();
-                item tempItem = allItems.allItemsList.get(random.nextInt(allItems.allItemsList.size()));
+                item tempItem = items.allItemsList.get(random.nextInt(items.allItemsList.size()));
                 room.getContainerTiles().get(i).getContainer().addItem(tempItem);
             }
         }
@@ -75,5 +76,6 @@ public class roomGen {
     public int getDefaultSlotNumber(){ return this.defaultSlotNumber;}
 
     public void setDefaultSlotNumber(int defaultSlotNumber) { this.defaultSlotNumber=defaultSlotNumber;}
+    public void setItems(items items) {this.items = items;}
 
 }

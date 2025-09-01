@@ -19,7 +19,6 @@ public class player {
     private inventory inventory;
     private room currentRoom;
     private item equipedItem;
-    private rooms rooms;
 
     public player(String name){
         this.name = name;

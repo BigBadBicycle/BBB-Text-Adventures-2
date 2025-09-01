@@ -3,6 +3,7 @@ package STE.inventory;
 import STE.item.item;
 import STE.item.items;
 import STE.item.weapons;
+import STE.universalVariables;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,6 @@ public class inventory {
     public inventory(int slotNumber) {
         this.slotNumber = slotNumber;
         slots = new ArrayList<item>(slotNumber);
-        items = new items();
 
     }
     public void isInventoryFull(){
@@ -67,5 +67,6 @@ public class inventory {
     public items getItems() { return items;}
 
     public void setSelectedItem(item item) { selectedItem=item;}
+    public void setItems(items items) { this.items = items;}
 
 }

@@ -2,15 +2,15 @@ package STE.item;
 
 public class item {
 
-    private int valuable;
+    private int value;
     private String name;
     private int amount;
     private boolean isEquiped;
 
-    item(String name, int valuable,int amount) {
+    public item(String name, int value, int amount) {
 
         this.name = name;
-        this.valuable = valuable;
+        this.value = value;
         this.amount = amount;
 
     }
@@ -33,7 +33,7 @@ public class item {
     }
 
     public String getName(){ return this.name;}
-    public int getValuable(){ return this.valuable;}
+    public int getValue(){ return this.value;}
     public int getAmount() { return this.amount;}
     public boolean getIsEquiped(){ return this.isEquiped;}
 
