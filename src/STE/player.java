@@ -1,14 +1,8 @@
 package STE;
 
 import STE.inventory.inventory;
-import STE.inventory.inventoryInterface;
 import STE.item.item;
 import STE.map.room;
-import STE.map.rooms;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Scanner;
 
 public class player {
 

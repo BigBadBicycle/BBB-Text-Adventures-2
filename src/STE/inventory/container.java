@@ -1,7 +1,5 @@
 package STE.inventory;
 
-import STE.item.items;
-
 public class container extends inventory{
 
 

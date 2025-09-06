@@ -1,7 +1,5 @@
 package STE;
 
-import STE.item.item;
-import STE.item.items;
 import STE.map.rooms;
 
 public class temp_Dev_testing {

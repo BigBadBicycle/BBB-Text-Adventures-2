@@ -3,11 +3,8 @@ package STE;
 import STE.inventory.container;
 import STE.inventory.inventoryInterface;
 import STE.inventory.containerInterface;
-import STE.item.items;
 import STE.map.roomInterface;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class gameInput {

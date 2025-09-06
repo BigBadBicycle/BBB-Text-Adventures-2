@@ -13,7 +13,7 @@ public class roomGen {
     private int defaultSlotNumber = 30;
     private items items;
 
-    roomGen(){
+    public roomGen(){
         random = new Random();
     }
 
@@ -34,13 +34,13 @@ public class roomGen {
     private void getCandidateContainers(room room, int contChance){
         //contChance is the chance that a tile is made into a container.
         //if contChance is below or = to result, tile is made to a container
+        //contChance can only be between 0-1000
 
         ArrayList<tile> tempTiles = room.getTiles();
         candidateTilesIndex = new ArrayList<Integer>();
 
         for(int i = 0; i<tempTiles.size(); i++){
             int result = random.nextInt(1001);
-            System.out.println(result);
             if(contChance>=result){
                 if(tempTiles.get(i).getIsEmptyTile()){
                     candidateTilesIndex.add(i);

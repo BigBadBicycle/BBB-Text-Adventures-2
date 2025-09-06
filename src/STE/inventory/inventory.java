@@ -2,8 +2,6 @@ package STE.inventory;
 
 import STE.item.item;
 import STE.item.items;
-import STE.item.weapons;
-import STE.universalVariables;
 
 import java.util.ArrayList;
 
@@ -32,7 +30,7 @@ public class inventory {
         if(inventoryFull==false){
             if(isAlreadyInSlots(item)==true){
                 slots.get(slots.indexOf(items.findItemByName(item))).addToAmount(item.getAmount());
-                System.out.println("added more items: "+item.getName()+" added by: "+item.getAmount());
+                System.out.println("added: "+item.getName()+"; added by: "+item.getAmount());
             } else{
                 item tempItem = items.findItemByName(item);
                 tempItem.setAmount(item.getAmount());

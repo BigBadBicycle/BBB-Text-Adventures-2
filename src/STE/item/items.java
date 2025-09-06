@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class items {
 
-    private universalVariables uV = new universalVariables();
+    private universalVariables uV= new universalVariables();
     public ArrayList<item> allItemsList;
     public ArrayList<item> veryCommonItemsList;
     public ArrayList<item> commonItemsList;

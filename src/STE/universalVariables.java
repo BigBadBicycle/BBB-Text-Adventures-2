@@ -1,5 +1,7 @@
 package STE;
 
+import STE.item.items;
+
 public class universalVariables {
 
     //items
