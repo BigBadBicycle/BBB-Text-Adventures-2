@@ -1,4 +1,4 @@
 package STE.Npc;
 
-public class ai {
+public class Ai {
 }

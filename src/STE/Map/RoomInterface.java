@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class RoomInterface {
 
-    private Player player;
     private Room room;
     private Random random;
+    private Player player;
 
     public RoomInterface(Player player){
         this.player=player;
@@ -66,7 +66,7 @@ public class RoomInterface {
 
     private void whatTileAmIOn(){
         String whatTile = "empty";
-        if(room.getPlayerTile().getIsEmptyTile()==true){
+        if(room.getPlayerTile().getIsEmpty()==true){
             whatTile = "empty";
         } else if(room.getPlayerTile().getHasContainer()==true){
             whatTile = "container";

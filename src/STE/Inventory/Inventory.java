@@ -17,6 +17,7 @@ public class Inventory {
 
     public Inventory() {
         uV = new UniversalVariables();
+        uV.createGameItems();
         items = uV.gameItems;
         this.slotNumber = uV.SLOT_AMOUNT;
         slots = new ArrayList<Item>(slotNumber);

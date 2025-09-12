@@ -6,7 +6,7 @@ import STE.Map.Rooms;
 
 public class Temp_Dev_Testing {
 
-    GameInput gameInput;
+
     public Temp_Dev_Testing(Player player, Items items, Rooms rooms){
 
         player.setCurrentRoom(rooms.start_room);

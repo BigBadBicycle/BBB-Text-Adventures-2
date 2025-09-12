@@ -1,22 +1,36 @@
 package STE.Map;
 
 import STE.Inventory.Container;
-import STE.Item.Items;
 
 public class Tile {
 
     private int x;
     private int y;
     private String tileSymbol;
-    private boolean hasContainer = false;
+    private boolean hasContainer;
     private Container container;
-    private boolean hasNPC = false;
-    private boolean hasPlayer = false;
-    private boolean isEmptyTile = true;
-    private Items items;
 
+    private boolean hasNPC;
+    private boolean hasPlayer;
+    private boolean isEmpty;
+    private boolean hasWall;
+    private boolean hasDoor;
+    private boolean hasBarricade;
+
+
+    //add a wall tile, door tile, half wall tile (barricade)
     Room room;
     public Tile(int column, int row, Room room){
+
+        isEmpty = true;
+        hasNPC = false;
+        hasPlayer = false;
+        hasWall = false;
+        hasContainer = false;
+        hasDoor = false;
+        hasBarricade = false;
+
+
         this.x = column;
         this.y = row;
         this.room = room;
@@ -25,23 +39,20 @@ public class Tile {
     }
 
     public void checkTile(){
-        if(hasContainer==true){
-            if(hasPlayer==true){
-                isEmptyTile = false;
-                tileSymbol = "[C]";
-            } else{
-                isEmptyTile = false;
-                tileSymbol = "[c]";
-            }
-        }else if(hasNPC==true){
-            isEmptyTile = false;
-            tileSymbol = "[n]";
-        } else if(hasPlayer==true){
-            isEmptyTile = false;
-            tileSymbol = "[P]";
+        if(hasContainer){
+            changeTile("c",false);
+        }else if(hasNPC){
+            changeTile("n",false);
+        } else if(hasPlayer){
+            changeTile("P",false);
+        } else if(hasWall){
+            changeTile("|",false);
+        } else if(hasBarricade){
+            changeTile("b",false);
+        } else if(hasDoor){
+            changeTile("d",false);
         } else{
-            isEmptyTile = true;
-            tileSymbol = "[ ]";
+            changeTile(" ",true);
         }
     }
 
@@ -53,7 +64,15 @@ public class Tile {
     public void createContainer(){
             this.hasContainer = true;
             container = new Container();
+    }
 
+    //private methods
+    private void changeTile(String symbol, boolean isEmptyTile){
+        this.isEmpty = isEmptyTile;
+        if(symbol!="P" && hasPlayer==true){
+            symbol =symbol.toUpperCase();
+        }
+        tileSymbol = "["+symbol+"]";
     }
 
 
@@ -63,9 +82,12 @@ public class Tile {
     public int getY() { return y;}
     public boolean getHasContainer() { return hasContainer;}
     public boolean getHasNPC() { return hasNPC;}
+    public boolean getHasWall() {return this.hasWall;}
+    public boolean getHasDoor() {return this.hasDoor;}
+    public boolean getHasBarricade() {return this.hasBarricade;}
     public boolean getHasPlayer() { return hasPlayer;}
     public Container getContainer() { return container;}
-    public boolean getIsEmptyTile() { return isEmptyTile;}
+    public boolean getIsEmpty() { return isEmpty;}
 
 
     public void setX(int x) { this.x = x;}
@@ -73,6 +95,5 @@ public class Tile {
     public void setHasContainer(boolean hasContainer) { this.hasContainer=hasContainer;}
     public void setHasNPC(boolean hasNPC) { this.hasNPC=hasNPC;}
     public void setHasPlayer(boolean hasPlayer) { this.hasPlayer=hasPlayer;}
-    public void setEmptyTile(boolean isEmptyTile) { this.isEmptyTile= isEmptyTile;}
-    public void setItems(Items items) { this.items = items;}
+    public void setEmpty(boolean isEmptyTile) { this.isEmpty = isEmptyTile;}
 }

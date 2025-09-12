@@ -17,6 +17,7 @@ public class RoomGen {
     public RoomGen(){
         random = new Random();
         uV = new UniversalVariables();
+        uV.createGameItems();
         this.items = uV.gameItems;
     }
 
@@ -31,9 +32,15 @@ public class RoomGen {
         System.out.println("generated "+room.getType());
     }
 
+    public void generateWalls(Room room){
+
+    }
+
     //private methods
 
+    //==============================================================================
     //containers
+    //==============================================================================
     private void getCandidateContainers(Room room, int contChance){
         //contChance is the chance that a tile is made into a container.
         //if contChance is below or = to result, tile is made to a container
@@ -45,7 +52,7 @@ public class RoomGen {
         for(int i = 0; i<tempTiles.size(); i++){
             int result = random.nextInt(1001);
             if(contChance>=result){
-                if(tempTiles.get(i).getIsEmptyTile()){
+                if(tempTiles.get(i).getIsEmpty()){
                     candidateTilesIndex.add(i);
                 }
             }
@@ -72,5 +79,11 @@ public class RoomGen {
             }
         }
     }
+    //==============================================================================
+    //walls
+    //==============================================================================
+    public void getWallCandidates(Room room){
 
+    }
+    //==============================================================================
 }
