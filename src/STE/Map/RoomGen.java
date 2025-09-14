@@ -10,7 +10,7 @@ import java.util.Random;
 public class RoomGen {
 
     private Random random;
-    private ArrayList<Integer> candidateTilesIndex;
+    private ArrayList<Integer> GenericCandidateTiles;
     private Items items;
     UniversalVariables uV;
 
@@ -27,13 +27,9 @@ public class RoomGen {
         generateContainerItems(room, items);
 
         //reset candidateTilesIndex
-        candidateTilesIndex = null;
+        GenericCandidateTiles = null;
 
         System.out.println("generated "+room.getType());
-    }
-
-    public void generateWalls(Room room){
-
     }
 
     //private methods
@@ -47,13 +43,13 @@ public class RoomGen {
         //contChance can only be between 0-1000
 
         ArrayList<Tile> tempTiles = room.getTiles();
-        candidateTilesIndex = new ArrayList<Integer>();
+        GenericCandidateTiles = new ArrayList<Integer>();
 
         for(int i = 0; i<tempTiles.size(); i++){
             int result = random.nextInt(1001);
             if(contChance>=result){
                 if(tempTiles.get(i).getIsEmpty()){
-                    candidateTilesIndex.add(i);
+                    GenericCandidateTiles.add(i);
                 }
             }
         }
@@ -61,8 +57,8 @@ public class RoomGen {
 
     private void makeToContainers(Room room){
         System.out.println("making container tiles in: "+room.getType());
-        for(int i = 0; i<candidateTilesIndex.size(); i++){
-            room.getTiles().get(candidateTilesIndex.get(i)).createContainer();
+        for(int i = 0; i<GenericCandidateTiles.size(); i++){
+            room.getTiles().get(GenericCandidateTiles.get(i)).createContainer();
         }
     }
 
@@ -82,7 +78,42 @@ public class RoomGen {
     //==============================================================================
     //walls
     //==============================================================================
-    public void getWallCandidates(Room room){
+    public void generateWalls(Room room){
+
+        ArrayList<Tile> tempTiles = room.getTiles();
+        GenericCandidateTiles = new ArrayList<Integer>();
+        int wallsToMake = random.nextInt(4);
+
+        for(int i=0; i<wallsToMake; i++) {
+
+            boolean isXAxis = random.nextBoolean();//if true then x-axis; false it's y-axis
+            int wallLength = random.nextInt(room.getSize());
+
+            if(isXAxis){
+
+                int xAxis = random.nextInt(room.getX().size());
+                int startAxis = random.nextInt(room.getY().size());
+                for(int j=0; j<wallLength; j++) {
+                    if(startAxis+j>room.getSize()){}
+                    else{
+
+                        room.getTiles().
+                    }
+                }
+
+            }
+            else{
+                int yAxis = random.nextInt(room.getY().size());
+                int startAxis = random.nextInt(room.getX().size());
+                for(int k=0; k<wallLength; k++) {
+                    if(startAxis+k>room.getSize()){}
+                    else{
+                        room.getTile(startAxis+k,yAxis).createWall();
+                    }
+                }
+            }
+
+        }
 
     }
     //==============================================================================

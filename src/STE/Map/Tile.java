@@ -46,7 +46,7 @@ public class Tile {
         } else if(hasPlayer){
             changeTile("P",false);
         } else if(hasWall){
-            changeTile("|",false);
+            changeTile("w",false);
         } else if(hasBarricade){
             changeTile("b",false);
         } else if(hasDoor){
@@ -64,6 +64,9 @@ public class Tile {
     public void createContainer(){
             this.hasContainer = true;
             container = new Container();
+    }
+    public void createWall(){
+        this.hasWall = true;
     }
 
     //private methods

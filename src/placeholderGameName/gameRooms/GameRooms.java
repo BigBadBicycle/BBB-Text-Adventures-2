@@ -15,6 +15,7 @@ public class GameRooms extends Rooms {
 
     public GameRooms(Items items){
         RoomGen rG = new RoomGen();
-        rG.generateContainers(this.start_room,50);
+        //rG.generateContainers(this.start_room,50);
+        rG.generateWalls(this.start_room);
     }
 }
